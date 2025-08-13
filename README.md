@@ -1,6 +1,22 @@
 # Exemplos FastAPI
 
-## Dependências
+## Configuração do projeto
+
+Clona este repositório localmente:
+
+```bash
+git clone https://github.com/fscheidt/fast
+```
+
+Criar ambiente virtual para o projeto:
+
+```bash
+cd fast
+python3 -m venv env
+source env/bin/activate
+```
+
+Instalar dependências do projeto:
 
 ```bash
 pip install -r requirements.txt
