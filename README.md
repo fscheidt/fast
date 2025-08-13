@@ -2,13 +2,13 @@
 
 ## Configuração do projeto
 
-Clona este repositório localmente:
+Clonar este repositório localmente:
 
 ```bash
 git clone https://github.com/fscheidt/fast
 ```
 
-Criar ambiente virtual para o projeto:
+Criar ambiente virtual:
 
 ```bash
 cd fast
