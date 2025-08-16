@@ -1,0 +1,18 @@
+{
+    "AD": {
+        "id": 1,
+        "name": "Andorra",
+        "code": "AD",
+        "emoji": "🇦🇩",
+        "code3": "AND",
+        "numeric": "020",
+        "svg_url": "https://flagcdn.com/AD.svg"
+    },
+    "AE": {
+        "id": 2,
+        "name": "United Arab Emirates",
+        "code": "AE",
+        "emoji": "🇦🇪",
+        "svg_url": "https://flagcdn.com/AE.svg"
+    }
+}

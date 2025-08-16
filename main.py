@@ -5,8 +5,8 @@ from datetime import datetime
 
 app = FastAPI()
 
-# database:
-countries = [
+# fake database:
+db_countries = [
     {
         "area_code": 20,
         "iso_code": "eg",
@@ -26,7 +26,7 @@ countries = [
         "language": "portuguese"
     },
 ]
-codes = { c["area_code"]: c["name"] for c in countries }
+codes = { c["area_code"]: c["name"] for c in db_countries }
 
 
 @app.get("/")
@@ -42,15 +42,14 @@ def datetime_now():
     }
 
 
-@app.get("/countries")
-def get_countries():
-    return countries
+@app.get("/paises")
+def get_db_countries():
+    return db_countries
 
 
-@app.get("/country/{area}")
-def get_country_area(area: int):
-    """/country/55"""
-    print(codes)
+@app.get("/paises/{area}")
+def get_db_country_area(area: int):
+    """ /paises/55 """
     if area in codes:
         return {
             "code_area": area, 
@@ -59,7 +58,7 @@ def get_country_area(area: int):
 
 
 @app.get("/quote")
-def get_random_quote():
+def get_random_zenquote():
     """ faz request e retorna o resultado em json """
     url = "https://zenquotes.io/api/random"
     response = requests.get(url)
@@ -71,7 +70,31 @@ def get_random_quote():
 
 
 @app.get("/users")
-def list_users():
+def list_users_in_file():
     with open("data/users.json") as f:
         return json.load(f)
 
+
+@app.get("/andorra")
+def get_andorra_country():
+    """ exemplo usando pydantic """
+    from models import Country
+    c = Country(
+        id=1,
+        name="Andorra",
+        code="AD",
+        code3="AND",
+        numeric="020",
+        emoji="🇦🇩"
+    )
+    return c
+
+
+@app.get("/countries")
+def list_countries(results: int = 5):
+    """
+        http :8000/countries -b
+    """
+    from services.countries import get_countries
+    data = get_countries()
+    return data.countries[:results]
