@@ -98,3 +98,12 @@ def list_countries(results: int = 5):
     from services.countries import get_countries
     data = get_countries()
     return data.countries[:results]
+
+
+# start server:
+# uvicorn main:app --reload
+
+# start server if running main.py:
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run("main:app", reload=True)
